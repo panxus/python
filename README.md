@@ -1,2 +1,2 @@
 # py
-初学python
+i'm a beginner
