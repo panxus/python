@@ -1,2 +1,2 @@
-# py
-i'm a beginner
+# python
+# beginner
