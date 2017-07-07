@@ -1,2 +1,1 @@
-# python
-# beginner
+初学python
