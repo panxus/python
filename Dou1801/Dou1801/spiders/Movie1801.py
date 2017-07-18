@@ -12,7 +12,7 @@ class Movie1801Spider(scrapy.Spider):
 
     def parse(self, response):
 
-        # #调试
+        # #调试方法①
         # from scrapy.shell import inspect_response
         # inspect_response(response,self)
         # # shell >> view(response)
