@@ -11,6 +11,12 @@ class Movie1801Spider(scrapy.Spider):
         yield scrapy.Request(url=url,headers=self.headers)
 
     def parse(self, response):
+
+        # #调试
+        # from scrapy.shell import inspect_response
+        # inspect_response(response,self)
+        # # shell >> view(response)
+
         lis = response.xpath('//ol[@class="grid_view"]/li')
         for li in lis:
             item = Dou1801Item()
