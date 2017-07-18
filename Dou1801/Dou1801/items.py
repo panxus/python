@@ -18,3 +18,9 @@ class Dou1801Item(scrapy.Item):
     nums = scrapy.Field()
     des = scrapy.Field()
     links = scrapy.Field()
+
+
+class Dou1802Item(scrapy.Item):
+    titles = scrapy.Field()
+    score = scrapy.Field()
+    pass
