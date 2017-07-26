@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'car01.spiders'
 #USER_AGENT = 'car01 (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -93,11 +93,16 @@ ROBOTSTXT_OBEY = True
 
 
 ITEM_PIPELINES = {
+       #spider c01
     'car01.pipelines.MyImagesPipeline': 1,
-    'car01.pipelines.Car01Pipeline': 300}
+    'car01.pipelines.Car01Pipeline': 300
+
+    # spider c02
+    # 'car01.pipelines.Car02Pipeline': 300
+}
+
 
 IMAGES_URLS_FIELD = 'brand_logo'
-
 IMAGES_STORE = './images'
 
 

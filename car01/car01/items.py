@@ -16,5 +16,17 @@ class Car01Item(scrapy.Item):
     brand_name = scrapy.Field()
     brand_logo = scrapy.Field()
     image_paths = scrapy.Field()
-    car_url = scrapy.Field()
-    pass
+    # car_url = scrapy.Field()
+
+
+
+class Car02Item(scrapy.Item):
+    # define the fields for your item here like:
+    # name = scrapy.Field()
+    brand_id = scrapy.Field()
+    brand_name = scrapy.Field()
+    series_id = scrapy.Field()
+    series_name = scrapy.Field()
+    series_url = scrapy.Field()
+    guide_price = scrapy.Field()
+    factory = scrapy.Field()
