@@ -27,7 +27,7 @@ class csTest(object):
         lt,execution = self.getData()
         form_data = {
             'username':'1058149613@qq.com',
-            'password':'xiao1111',
+            'password':'*****',
             'lt':lt,
             'execution':execution,
             '_eventId':'submit',

@@ -34,7 +34,7 @@ class zhTest(object):
         login_url = 'https://www.zhihu.com/login/phone_num'
         login_data = {
             '_xsrf':_xsrf,
-            'password':'Panxu1994',
+            'password':'*****',
             'captcha_type':'cn',
             'phone_num':'17607188711'
         }
