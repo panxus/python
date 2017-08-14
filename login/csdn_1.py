@@ -2,7 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 import cookielib
-
+#创建时间 2017年8月1日
 class csTest(object):
     def __init__(self,headers):
         self.session = requests.Session()
