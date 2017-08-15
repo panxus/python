@@ -10,7 +10,6 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
 BOT_NAME = 'xici2201'
-
 SPIDER_MODULES = ['xici2201.spiders']
 NEWSPIDER_MODULE = 'xici2201.spiders'
 

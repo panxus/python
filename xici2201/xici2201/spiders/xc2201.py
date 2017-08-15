@@ -4,14 +4,15 @@ from xici2201.items import Xici2201Item
 
 class Xc2201Spider(scrapy.Spider):
     name = 'xc2202'
-    max_page = raw_input('输入抓取页数:\n')
+    # str_page = raw_input('输入抓取页数开始:\n')
+    # max_page = raw_input('输入抓取页数结束:\n')
     # allowed_domains = ['xici.com']
     # start_urls = ['http://www.xicidaili.com/nn/']
     headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'}
     begin_url = 'http://www.xicidaili.com/nn/%d'
 
     def start_requests(self):
-        url = self.begin_url % 1
+        url = self.begin_url % int(self.str_page)
         yield scrapy.Request(url=url,headers=self.headers)
 
     def parse(self, response):
