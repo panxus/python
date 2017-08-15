@@ -1,7 +1,8 @@
 from scrapy.cmdline import execute
 
-name = 'blzx_spider'
+name = 'blzz_spider'
 
-code = 'scrapy crawl {0}'.format(name)
 
-execute(code.split())
+execute(['scrapy','crawl',name])
+
+

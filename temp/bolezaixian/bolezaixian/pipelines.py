@@ -13,9 +13,16 @@ class BolezaixianPipeline(object):
 
 
 from scrapy.pipelines.images import ImagesPipeline
-class ArticleImagePipeline(ImagesPipeline):
+from scrapy.exceptions import DropItem
+
+class BlogArticlePipeline(ImagesPipeline):
     def item_completed(self, results, item, info):
-        for ok,value in results:
-            image_file_path = value['path']
-        item['front_image_path'] = image_file_path
+        # node = info.downloaded
+        # for n in node:
+        #     item['image_path'] = node[n]['path']
+
+        image = [y['path'] for x,y in results if x]
+        if not image:
+            raise DropItem('no images')
+        item['image_path'] = image
         return item

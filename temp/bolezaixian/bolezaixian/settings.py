@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import os
+
 # Scrapy settings for bolezaixian project
 #
 # For simplicity, this file contains only settings considered important or
@@ -27,7 +27,7 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 1
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -52,9 +52,11 @@ ROBOTSTXT_OBEY = False
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
+DOWNLOADER_MIDDLEWARES = {
 #    'bolezaixian.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+    'bolezaixian.middleware.bUserAgent.bUserAgents':20,
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware':None,
+}
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -64,17 +66,14 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
+import os
+IMAGES_URLS_FIELD = 'image_url'
+dir_name = os.path.abspath(os.path.dirname(__file__))
+IMAGES_STORE = os.path.join(dir_name,'image')
 ITEM_PIPELINES = {
    'bolezaixian.pipelines.BolezaixianPipeline': 300,
-    # 'scrapy.pipelines.images.ImagesPipeline':1,
-    'bolezaixian.pipelines.ArticleImagePipeline': 1 ,
+   'bolezaixian.pipelines.BlogArticlePipeline': 30,
 }
-
-IMAGES_URLS_FIELD = 'front_image_url'
-project_dir = os.path.abspath(os.path.dirname(__file__))
-IMAGES_STORE = os.path.join(project_dir,'images')
-# IMAGES_MIN_HEIGHT = 100
-# IMAGES_MIN_WIDTH = 100
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
