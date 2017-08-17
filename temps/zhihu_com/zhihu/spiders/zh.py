@@ -29,7 +29,7 @@ class ZhSpider(scrapy.Spider):
             post_data = {
                 'phone_num':'17607188711',
                 '_xsrf' : csrf,
-                'password' :'Panxu1994',
+                'password' :'****',
                 'captcha':captcha
             }
             yield scrapy.FormRequest(url='https://www.zhihu.com/login/phone_num',formdata=post_data,headers=self.headers,callback=self.handle_result)
