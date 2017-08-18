@@ -32,7 +32,7 @@ class ZhtSpider(scrapy.Spider):
         post_data = {
             'phone_num':'17607188711',
             '_xsrf' : xsrf,
-            'password' :'Panxu1994',
+            'password' :'****',
             'captcha':captcha
         }
         yield scrapy.FormRequest(url=post_url,formdata=post_data,callback=self.post_login)
