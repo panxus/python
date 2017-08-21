@@ -6,7 +6,7 @@
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
-
+from fake_useragent import UserAgent
 
 class BolezaixianSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
@@ -54,3 +54,18 @@ class BolezaixianSpiderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+class DownloaderMiddlewareUA(object):
+    def __init__(self,crawler):
+        super(DownloaderMiddlewareUA,self).__init__()
+        self.ua_type = crawler.settings.get('USER_AGENT_DEFAULT','random')
+        self.ua = UserAgent()
+    @classmethod
+    def from_crawler(cls, crawler):
+      return cls(crawler)
+
+    def process_request(self, request, spider):
+        def get_ua():
+            return getattr(self.ua,self.ua_type)
+        request.headers.setdefault(b'User-Agent',get_ua())
