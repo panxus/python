@@ -48,8 +48,8 @@ class parseStr(object):
             carColor = colorDict['result']['specitems'][0]['coloritems']
             # 内饰颜色
             innerColor = iColorDIct['result']['specitems']
-        except Exception,e:
-            print 'field error:',e
+        except Exception as e:
+            print('field error:',e)
         else:
             self.carSeriesId = carSeriesId
             self.carTypeName = carTypeName
@@ -68,7 +68,7 @@ class parseStr(object):
 
 if __name__ == '__main__':
     ######### ①. #########
-    javascript = file('test_1.html')
+    javascript = open('test_1.html')
     jsContent = javascript.read()
 
     ######### ②. #########
@@ -81,9 +81,9 @@ if __name__ == '__main__':
 
     s = parseStr(jsContent)
     s.getResult()
-    print s.carSeriesId
-    print s.carTypeName
-    print s.carColor
-    print s.carInnerColor
-    print s.carZhiDaoPrice
-    print s.carcityTime
+    print(s.carSeriesId)
+    print(s.carTypeName)
+    print(s.carColor)
+    print(s.carInnerColor)
+    print(s.carZhiDaoPrice)
+    print(s.carcityTime)

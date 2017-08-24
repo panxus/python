@@ -2,20 +2,17 @@
 
 '''
 Function:handle database's any operation
-Author:Wan Shitao
-Email:wst.521@163.com
-Date:2014.8.20
-Reference:funcs.py
+
 '''
 from twisted.enterprise import adbapi
-import MySQLdb
+import pymysql
 
 def get_db (**kwargs):
     '''connect database,return link resource'''
     try:
-        db=MySQLdb.connect(**kwargs)
-    except Exception,e:
-        print "Link DB error:",e
+        db=pymysql.connect(**kwargs)
+    except Exception as e:
+        print("Link DB error:",e)
     else:
         return db
 def create_table (data,primary,table,**kwargs):
@@ -49,6 +46,15 @@ def insert_data (data_,table,**kwargs):
     data = [ data_[k] for k in keys ]
     exec_sql(sql,data,**kwargs)
 
+def insert_manydata (sql,data,**kwargs):
+    '''execute insert sql and other operation'''
+    conn=get_db(**kwargs)
+    cur=conn.cursor()
+    cur.executemany(sql,data)
+    conn.commit()
+    cur.close()
+    conn.close()
+
 
 def adb_connect_db(db_type,**kwargs):
     '''
@@ -71,7 +77,7 @@ def adb_insert_data(item,table,db_type,**kwargs):
     dbpool.close()
     
 def insSuccess(data):
-    print "data inserted",data
+    print("data inserted",data)
     
 def insFailed(exp,data):
-    print "insert failed",data,"error:",exp.getErrorMessage()
+    print("insert failed",data,"error:",exp.getErrorMessage())
